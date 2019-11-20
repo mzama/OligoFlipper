@@ -151,11 +151,7 @@
             }
         </style>
         <script>
-
-        /*    $('#oligoInput').on("change keyup paste input copy touchend touchstart", function () {
-                RevSeqPress ();
-            });*/
-            // Reverses sequence and calculates amount of each nucleotide
+            //Called when the sequence input updates to set reverse and count bases
             function RevSeqPress ()
             {
                 //Get the input from the text field
@@ -169,7 +165,7 @@
                 nG = 0;
                 nC = 0;
                 nU = 0;
-                
+
                 //Loop through the nucleotide array and add up the numbers of each nucleotide present
                 for (i = 0; i < ntCount.length; i++)
                 {
@@ -229,8 +225,7 @@
         <p>
             <div class = "inputZone">
                 <h2>Enter Sequence</h2>          
-                <input type = "text" id = "oligoInput" value = "" class = "oligoInputBox" oninput = "RevSeqPress()" >
-                <!--<button class = "flipButton" onclick = "RevSeqPress()">Flip</button>/><!-->
+                <input type = "text" id = "oligoInput" value = "" class = "oligoInputBox" oninput = "RevSeqPress()">
             </div>
         </p>
         <p>
