@@ -152,9 +152,9 @@
         </style>
         <script>
 
-            $('#oligoInput').on("change keyup paste input copy touchend touchstart", function () {
+        /*    $('#oligoInput').on("change keyup paste input copy touchend touchstart", function () {
                 RevSeqPress ();
-            });
+            });*/
             // Reverses sequence and calculates amount of each nucleotide
             function RevSeqPress ()
             {
@@ -169,7 +169,7 @@
                 nG = 0;
                 nC = 0;
                 nU = 0;
-                alert ("Something happened!");
+                
                 //Loop through the nucleotide array and add up the numbers of each nucleotide present
                 for (i = 0; i < ntCount.length; i++)
                 {
