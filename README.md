@@ -1,0 +1,1 @@
+This program was created for Ada McVean of the Dahma Lab at McGill University to quickly flip around nucleotides and assess their base composition.

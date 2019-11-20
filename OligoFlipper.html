@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang = en>
+    <head>
+        <title>Oligo Flipper</title>
+        <meta charset = "utf-8">
+        <style>
+            /* GLOBAL CSS RESET */
+            html, body, div, span, applet, object, iframe,
+            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+            a, abbr, acronym, address, big, cite, code,
+            del, dfn, em, img, ins, kbd, q, s, samp,
+            small, strike, strong, sub, sup, tt, var,
+            b, u, i, center, dl, dt, dd, ol, ul, li,
+            fieldset, form, label, legend, table, caption,
+            tbody, tfoot, thead, tr, th, td, article, aside,
+            canvas, details, embed, figure, figcaption, footer,
+            header, hgroup, menu, nav, output, ruby, section,
+            summary, time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: inherit;
+            vertical-align: baseline;
+            }
+            /* HTML5 display-role reset for older browsers */
+            article, aside, details, figcaption, figure,
+            footer, header, hgroup, menu, nav, section {
+            display: block;
+            }
+            body {
+            line-height: 1;
+            }
+            blockquote, q {
+            quotes: none;
+            }
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+            content: '';
+            content: none;
+            }
+            table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            }
+            strong, b {
+            font-weight: bold;
+            }
+            em, i {
+            font-style: italic;
+            }
+            a img {
+            border: none;
+            }
+            /* END RESET*/
+
+            /* Start Styles */
+            body {
+                background-color: #DDEEFF;
+                color: #0A0A0A;
+                font-family: 'Lucida Sans', sans-serif;
+                font-size: 18px;
+            }
+            button {
+                background-color: #CCC;
+                border: solid black;
+                border-radius: 25px;
+                border-width: 0px;
+                color: #0A0A0A;
+                font-size: 1em;
+                padding: 0.5em 1em;
+            }
+            button:hover{
+                background-color: #2A2A2A;
+                color: #DDD;
+            }
+            button:focus {
+                outline: none;
+            }
+            h1 {
+                font-size: 6vw;
+                font-weight: bold;
+                margin: 0 auto 50px auto;
+                text-align: center;
+            }
+            h2 {
+                color: #4A4A4A;
+                font-size: 2vw;
+                margin: 0.25em 0.5em;                
+            }
+            html {
+                padding: 25px 75px;
+            }
+            input {
+                border-radius: 25px;
+                border-width: 0px;
+                box-sizing: border-box;
+                font-size: 1em;
+                padding: 0.5em 1em;                
+                width: 100%;
+            }
+            input:focus {               
+                outline: none;
+            }
+            p {
+                line-height: 1.5;
+            }
+            table,th,td {            
+                padding: 10px;
+            }
+            tr {
+                background: #BBB;
+            }
+            td + td {
+                text-align: right;
+            }
+            table {
+                float: right;
+                border-radius: 5px;
+                border: 2px inset white;
+                width: 15%;
+                margin-left: 1%;
+            }
+            .altTr
+            {
+                background: #DDD;
+            }
+            .inputZone {
+                display: block;                
+                margin: 20px auto;
+                text-align: center;
+
+            }
+            .reversedSeq {
+                background-color: #CCC;
+                border-radius: 5px;
+                border: 2px white;
+                border-style: inset;
+                color: #5A5A5A;
+                display: block;
+                float: left;
+                min-height: 180px;
+                padding: 0.5em 1em;
+                overflow-wrap: break-word;                
+                width: 78%;
+            }
+            .revSeqHead {   
+                color: #8A8A8A;
+                display: inline-block;
+                font-size: 0.9em;
+                height: 1.25em;
+            }
+        </style>
+        <script>
+
+            $('#oligoInput').on("change keyup paste input copy touchend touchstart", function () {
+                RevSeqPress ();
+            });
+            // Reverses sequence and calculates amount of each nucleotide
+            function RevSeqPress ()
+            {
+                //Get the input from the text field
+                inputOligo = document.getElementById("oligoInput").value;
+                //Break the input into an array
+                ntCount = inputOligo.toUpperCase().split("");
+
+                //Reset the count for each nucleotide
+                nA = 0;
+                nT = 0;
+                nG = 0;
+                nC = 0;
+                nU = 0;
+                alert ("Something happened!");
+                //Loop through the nucleotide array and add up the numbers of each nucleotide present
+                for (i = 0; i < ntCount.length; i++)
+                {
+                    switch(ntCount[i])
+                    {
+                        case "A":
+                            nA += 1;
+                            break;
+                        case "T":
+                            nT += 1;
+                            break;
+                        case "G":
+                            nG += 1;
+                            break;
+                        case "C":
+                            nC += 1;
+                            break;
+                        case "U":
+                            nU += 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                //Set the output as the reversed input
+                outputOligo = inputOligo.split("").reverse().join("");
+                //Set all text
+                document.getElementById("revSeq").innerHTML = outputOligo;
+                document.getElementById("numN").innerHTML = outputOligo.length;
+                document.getElementById("numA").innerHTML = nA;
+                document.getElementById("numT").innerHTML = nT;
+                document.getElementById("numG").innerHTML = nG;
+                document.getElementById("numC").innerHTML = nC;
+                document.getElementById("numU").innerHTML = nU;
+            }
+            function SelectText(containerid) {
+                if (document.selection) { // IE
+                    var range = document.body.createTextRange();
+                    range.moveToElementText(document.getElementById(containerid));
+                    range.select();
+                } else if (window.getSelection) {
+                    var range = document.createRange();
+                    range.selectNode(document.getElementById(containerid));
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <p>
+            <div class = "title">
+                <h1>Oligonucleotide Flipper</h1>
+            </div>
+        </p>
+        <p>
+            <div class = "inputZone">
+                <h2>Enter Sequence</h2>          
+                <input type = "text" id = "oligoInput" value = "" class = "oligoInputBox" oninput = "RevSeqPress()" >
+                <!--<button class = "flipButton" onclick = "RevSeqPress()">Flip</button>/><!-->
+            </div>
+        </p>
+        <p>
+            <div class = "seqInfo">
+                <div class = "reversedSeq" onClick = "SelectText ('revSeq')">
+                    <span class = "revSeqHead">Reversed Sequence</span>
+                    <br>
+                    <span id = "revSeq" onClick = "SelectText ('revSeq')"></span>
+                </div>
+                <div class = "baseQuants">
+                    <table>
+                        <tr class = "altTr">
+                                <td>Length</td>
+                                <td id = "numN">0</td>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td id = "numA">0</td>
+                        </tr>
+                        <tr class = "altTr">
+                            <td>T</td>
+                            <td id = "numT">0</td>
+                        </tr>
+                        <tr>
+                            <td>G</td>
+                            <td id = "numG">0</td>
+                        </tr>
+                        <tr class = "altTr">
+                            <td>C</td>
+                            <td id = "numC">0</td>
+                        </tr>
+                        <tr>
+                            <td>U</td>
+                            <td id = "numU">0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </p>
+    </body>
+</html>
