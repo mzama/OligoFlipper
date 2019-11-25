@@ -195,7 +195,7 @@
                 outputOligo = inputOligo.split("").reverse().join("");
                 //Set all text
                 document.getElementById("revSeq").innerHTML = outputOligo;
-                document.getElementById("numN").innerHTML = outputOligo.length;
+                document.getElementById("numN").innerHTML = outputOligo.replace(" ", "").length;
                 document.getElementById("numA").innerHTML = nA;
                 document.getElementById("numT").innerHTML = nT;
                 document.getElementById("numG").innerHTML = nG;
