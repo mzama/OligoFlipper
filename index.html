@@ -140,7 +140,7 @@
                 float: left;
                 min-height: 180px;
                 padding: 0.5em 1em;
-                overflow-wrap: break-word;                
+                overflow-wrap: break-word;          
                 width: 78%;
             }
             .revSeqHead {   
@@ -195,7 +195,7 @@
                 outputOligo = inputOligo.split("").reverse().join("");
                 //Set all text
                 document.getElementById("revSeq").innerHTML = outputOligo;
-                document.getElementById("numN").innerHTML = outputOligo.replace(" ", "").length;
+                document.getElementById("numN").innerHTML = outputOligo.replace(/\s+/g, "").length;
                 document.getElementById("numA").innerHTML = nA;
                 document.getElementById("numT").innerHTML = nT;
                 document.getElementById("numG").innerHTML = nG;
@@ -233,7 +233,7 @@
                 <div class = "reversedSeq" onClick = "SelectText ('revSeq')">
                     <span class = "revSeqHead">Reversed Sequence</span>
                     <br>
-                    <span id = "revSeq" onClick = "SelectText ('revSeq')"></span>
+                    <pre><span id = "revSeq" onClick = "SelectText ('revSeq')"></span></pre>
                 </div>
                 <div class = "baseQuants">
                     <table>
