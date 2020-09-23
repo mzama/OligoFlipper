@@ -1,12 +1,6 @@
-/* FONTS *//*
-@font-face { 
-    font-family: 'Raleway Thin'; src: url('../Fonts/Raleway/Raleway-VariableFont_wght.ttf'); 
-}
-@font-face { 
-    font-family: 'Open Sans'; src: url('../Fonts/Open_Sans/OpenSans-Regular.ttf'); 
-}  */
 /* GLOBAL STYLES */
-:root{     
+:root{
+    --element-bottom-spacing: 3.75rem;     
     --ui-color-dark: #374857;
     --ui-color-faded: #aab0b5;
     --ui-color-light: #dfe3e6;
@@ -16,24 +10,7 @@ body {
     color: var(--ui-color-dark);
     font-family: 'Open Sans', 'Raleway', sans-serif;
 }
-/* .bg-image {    
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../Images/bg/DNA_2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-    filter: blur(2px);  
-    left: 0px;
-    height: 100vh;
-    width: 100vw;
-    padding-top: var(--header-height);
-    position: fixed;
-    top: 0px;
-    z-index: -10;
-    transform: scale(1.05);
-    overflow: hidden;
-} */
 .content-container {
-    /* background: blue; */
     margin: 0 auto;
     width: 80vw;
 }
@@ -47,11 +24,10 @@ html {
 
 /* HEADER */
 .header-container {    
-    /* background-image: linear-gradient(to bottom right, orange, blue, black, black); */
     background-color: var(--ui-color-dark);
     box-sizing: border-box;
     height: 6rem;
-    margin-bottom: 3rem;
+    margin-bottom: var(--element-bottom-spacing);
     padding: 1.5rem 2.25rem;
 }
 .header-title {
@@ -63,9 +39,10 @@ html {
     font-weight: 100;
     font-size: 3rem;
 }
+
 /* OLIGO INPUT */
 .oligo-input-container {
-    margin: 0 auto 3rem;
+    margin: 0 auto 1.25rem;
 }
 .inputbox-oligo {
     background-color: var(--ui-color-light);
@@ -82,9 +59,8 @@ html {
 .oligo-output-container {
     background-color: var(--ui-color-light);
     border: 4px solid var(--ui-color-dark);
-    /* border: 2px inset; */
     border-radius: 15px;
-    margin: 0 auto 3rem;
+    margin: 0 auto var(--element-bottom-spacing);
     min-height: 8rem;
     padding: 0.5rem 0.75rem;
 }
@@ -96,7 +72,7 @@ html {
 
 /* OLIGO TABLE */
 .oligo-table-container {
-    margin: 0 auto 3rem;
+    margin: 0 auto var(--element-bottom-spacing);
 }
 table {
     background-color: var(--ui-color-light);
