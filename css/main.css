@@ -1,0 +1,150 @@
+/* FONTS *//*
+@font-face { 
+    font-family: 'Raleway Thin'; src: url('../Fonts/Raleway/Raleway-VariableFont_wght.ttf'); 
+}
+@font-face { 
+    font-family: 'Open Sans'; src: url('../Fonts/Open_Sans/OpenSans-Regular.ttf'); 
+}  */
+/* GLOBAL STYLES */
+:root{     
+    --ui-color-dark: #374857;
+    --ui-color-faded: #aab0b5;
+    --ui-color-light: #dfe3e6;
+}
+body {
+    background: #dce0e0;
+    color: var(--ui-color-dark);
+    font-family: 'Open Sans', 'Raleway', sans-serif;
+}
+/* .bg-image {    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../Images/bg/DNA_2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    filter: blur(2px);  
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    padding-top: var(--header-height);
+    position: fixed;
+    top: 0px;
+    z-index: -10;
+    transform: scale(1.05);
+    overflow: hidden;
+} */
+.content-container {
+    /* background: blue; */
+    margin: 0 auto;
+    width: 80vw;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', 'Open Sans', sans-serif;
+}
+html {
+    font-size: 22px;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.header-container {    
+    /* background-image: linear-gradient(to bottom right, orange, blue, black, black); */
+    background-color: var(--ui-color-dark);
+    box-sizing: border-box;
+    height: 6rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem 2.25rem;
+}
+.header-title {
+    width: 80vw;
+    margin: 0 auto;
+}
+.header-title h1 {
+    color: var(--ui-color-light);
+    font-weight: 100;
+    font-size: 3rem;
+}
+/* OLIGO INPUT */
+.oligo-input-container {
+    margin: 0 auto 3rem;
+}
+.inputbox-oligo {
+    background-color: var(--ui-color-light);
+    border: 4px solid var(--ui-color-dark);
+    border-radius: 15px;
+    box-sizing: border-box;
+    display: block;
+    height: 2.5rem;
+    padding: 0.15rem 0.75rem;    
+    width: 100%;
+}
+
+/* OLIGO OUTPUT */
+.oligo-output-container {
+    background-color: var(--ui-color-light);
+    border: 4px solid var(--ui-color-dark);
+    /* border: 2px inset; */
+    border-radius: 15px;
+    margin: 0 auto 3rem;
+    min-height: 8rem;
+    padding: 0.5rem 0.75rem;
+}
+.oligo-output-title {
+    color: var(--ui-color-faded);
+    font-size: 0.9rem;
+    height: 1.5rem;
+}
+
+/* OLIGO TABLE */
+.oligo-table-container {
+    margin: 0 auto 3rem;
+}
+table {
+    background-color: var(--ui-color-light);
+    border: 4px solid var(--ui-color-dark);
+    border-collapse: separate;
+    border-radius: 15px;  
+    color: var(--ui-color-dark);  
+    width: 100%;
+}
+th {
+    border: 2px solid var(--ui-color-dark);
+    font-size: 1.1rem;
+    font-weight: bold;
+    
+    padding: 0.5rem 0.75rem;
+}
+td {
+    border: 2px solid var(--ui-color-dark);
+    padding: 0.5rem 0.75rem;
+    text-align: right;
+}
+.table-cell-A, .table-cell-G, .table-cell-U {
+    background-color: 0;
+}
+.table-cell-type, .table-cell-T, .table-cell-C, .table-cell-Hash {
+    background-color: rgba(0,0,0,0.1);
+}
+#row-DNA {
+    color: black;
+}
+#row-RNA {
+    color: red;
+}
+#row-Fluoro {
+    color: green;
+}
+#row-LNA {
+    color: orange;
+}
+#row-OMe {
+    color: blue;
+}
+#row-FANA {
+    color: #b5a907;
+}
+#row-ANA {
+    color: purple;
+}
+#row-Total {
+    color: var(--ui-color-dark);
+}

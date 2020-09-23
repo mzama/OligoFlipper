@@ -3,267 +3,125 @@
     <head>
         <title>Oligo Flipper</title>
         <meta charset = "utf-8">
-        <style>
-            /* GLOBAL CSS RESET */
-            html, body, div, span, applet, object, iframe,
-            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-            a, abbr, acronym, address, big, cite, code,
-            del, dfn, em, img, ins, kbd, q, s, samp,
-            small, strike, strong, sub, sup, tt, var,
-            b, u, i, center, dl, dt, dd, ol, ul, li,
-            fieldset, form, label, legend, table, caption,
-            tbody, tfoot, thead, tr, th, td, article, aside,
-            canvas, details, embed, figure, figcaption, footer,
-            header, hgroup, menu, nav, output, ruby, section,
-            summary, time, mark, audio, video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font: inherit;
-            vertical-align: baseline;
-            }
-            /* HTML5 display-role reset for older browsers */
-            article, aside, details, figcaption, figure,
-            footer, header, hgroup, menu, nav, section {
-            display: block;
-            }
-            body {
-            line-height: 1;
-            }
-            blockquote, q {
-            quotes: none;
-            }
-            blockquote:before, blockquote:after,
-            q:before, q:after {
-            content: '';
-            content: none;
-            }
-            table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            }
-            strong, b {
-            font-weight: bold;
-            }
-            em, i {
-            font-style: italic;
-            }
-            a img {
-            border: none;
-            }
-            /* END RESET*/
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-            /* Start Styles */
-            body {
-                background-color: #DDEEFF;
-                color: #0A0A0A;
-                font-family: 'Lucida Sans', sans-serif;
-                font-size: 18px;
-            }
-            button {
-                background-color: #CCC;
-                border: solid black;
-                border-radius: 25px;
-                border-width: 0px;
-                color: #0A0A0A;
-                font-size: 1em;
-                padding: 0.5em 1em;
-            }
-            button:hover{
-                background-color: #2A2A2A;
-                color: #DDD;
-            }
-            button:focus {
-                outline: none;
-            }
-            h1 {
-                font-size: 6vw;
-                font-weight: bold;
-                margin: 0 auto 50px auto;
-                text-align: center;
-            }
-            h2 {
-                color: #4A4A4A;
-                font-size: 2vw;
-                margin: 0.25em 0.5em;                
-            }
-            html {
-                padding: 25px 75px;
-            }
-            input {
-                border-radius: 25px;
-                border-width: 0px;
-                box-sizing: border-box;
-                font-size: 1em;
-                padding: 0.5em 1em;                
-                width: 100%;
-            }
-            input:focus {               
-                outline: none;
-            }
-            p {
-                line-height: 1.5;
-            }
-            table,th,td {            
-                padding: 10px;
-            }
-            tr {
-                background: #BBB;
-            }
-            td + td {
-                text-align: right;
-            }
-            table {
-                float: right;
-                border-radius: 5px;
-                border: 2px inset white;
-                width: 15%;
-                margin-left: 1%;
-            }
-            .altTr
-            {
-                background: #DDD;
-            }
-            .inputZone {
-                display: block;                
-                margin: 20px auto;
-                text-align: center;
-
-            }
-            .reversedSeq {
-                background-color: #CCC;
-                border-radius: 5px;
-                border: 2px white;
-                border-style: inset;
-                color: #5A5A5A;
-                display: block;
-                float: left;
-                min-height: 180px;
-                padding: 0.5em 1em;
-                overflow-wrap: break-word;          
-                width: 78%;
-            }
-            .revSeqHead {   
-                color: #8A8A8A;
-                display: inline-block;
-                font-size: 0.9em;
-                height: 1.25em;
-            }
-        </style>
-        <script>
-            //Called when the sequence input updates to set reverse and count bases
-            function RevSeqPress ()
-            {
-                //Get the input from the text field
-                inputOligo = document.getElementById("oligoInput").value;
-                //Break the input into an array
-                ntCount = inputOligo.toUpperCase().split("");
-
-                //Reset the count for each nucleotide
-                nA = 0;
-                nT = 0;
-                nG = 0;
-                nC = 0;
-                nU = 0;
-
-                //Loop through the nucleotide array and add up the numbers of each nucleotide present
-                for (i = 0; i < ntCount.length; i++)
-                {
-                    switch(ntCount[i])
-                    {
-                        case "A":
-                            nA += 1;
-                            break;
-                        case "T":
-                            nT += 1;
-                            break;
-                        case "G":
-                            nG += 1;
-                            break;
-                        case "C":
-                            nC += 1;
-                            break;
-                        case "U":
-                            nU += 1;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-
-                //Set the output as the reversed input
-                outputOligo = inputOligo.split("").reverse().join("");
-                //Set all text
-                document.getElementById("revSeq").innerHTML = outputOligo;
-                document.getElementById("numN").innerHTML = outputOligo.replace(/\s+/g, "").length;
-                document.getElementById("numA").innerHTML = nA;
-                document.getElementById("numT").innerHTML = nT;
-                document.getElementById("numG").innerHTML = nG;
-                document.getElementById("numC").innerHTML = nC;
-                document.getElementById("numU").innerHTML = nU;
-            }
-            function SelectText(containerid) {
-                if (document.selection) { // IE
-                    var range = document.body.createTextRange();
-                    range.moveToElementText(document.getElementById(containerid));
-                    range.select();
-                } else if (window.getSelection) {
-                    var range = document.createRange();
-                    range.selectNode(document.getElementById(containerid));
-                    window.getSelection().removeAllRanges();
-                    window.getSelection().addRange(range);
-                }
-            }
-        </script>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@100&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/main.css" />
+        <script> </script>
+        <!-- Makes CSS Transitions work -->
+        
+        <script type="text/javascript" src="js/main.js"></script>
+        
     </head>
     <body>
-        <p>
-            <div class = "title">
-                <h1>Oligonucleotide Flipper</h1>
-            </div>
-        </p>
-        <p>
-            <div class = "inputZone">
-                <h2>Enter Sequence</h2>          
-                <input type = "text" id = "oligoInput" value = "" class = "oligoInputBox" oninput = "RevSeqPress()">
-            </div>
-        </p>
-        <p>
-            <div class = "seqInfo">
-                <div class = "reversedSeq" onClick = "SelectText ('revSeq')">
-                    <span class = "revSeqHead">Reversed Sequence</span>
-                    <br>
-                    <pre><span id = "revSeq" onClick = "SelectText ('revSeq')"></span></pre>
+        <div class="bg-image"></div>
+        <div class="page-container">
+            <div class="header-container">
+                <div class="header-title">
+                    <h1>OLIGO FLIPPER</h1>
                 </div>
-                <div class = "baseQuants">
+            </div>
+            <div class="content-container">
+                <div class="oligo-input-container">
+                    <input type="text" id="oligoInputBox" value="Enter Sequence Here" class="inputbox-oligo" oninput="RevSeqPress()">
+                </div>
+                <div class="oligo-output-container" onClick="SelectText ('reversedSequenceOutput')">
+                    <div class="oligo-output-title">
+                        Reversed Sequence
+                    </div>
+                    <pre><span id="reversedSequenceOutput"></span></pre>
+                </div>
+                <div class="oligo-table-container">
+
+                </div>
+                 
+                <div class="oligo-table-container">
                     <table>
-                        <tr class = "altTr">
-                                <td>Length</td>
-                                <td id = "numN">0</td>
+                        <tr class="table-base-headings">
+                            <th class="table-cell-type" id="tableHeadingType">Type</th>
+                            <th class="table-cell-A" id="tableHeadingA">A</th>
+                            <th class="table-cell-T" id="tableHeadingT">T</th>
+                            <th class="table-cell-G" id="tableHeadingT">G</th>
+                            <th class="table-cell-C" id="tableHeadingC">C</th>
+                            <th class="table-cell-U" id="tableHeadingU">U</th>
+                            <th class="table-cell-Hash" id="tableHeadingHash">#</th>
                         </tr>
-                        <tr>
-                            <td>A</td>
-                            <td id = "numA">0</td>
+                        <tr class="table-type-row" id="row-DNA">
+                            <th class="table-cell-type" id="tableHeadingDNA">DNA (dN)</th>
+                            <td  class="table-cell-A" id="amountDNA_A">0</td>
+                            <td class="table-cell-T" id="amountDNA_T">0</td>
+                            <td class="table-cell-G" id="amountDNA_G">0</td>
+                            <td class="table-cell-C" id="amountDNA_C">0</td>
+                            <td class="table-cell-U" id="amountDNA_U">0</td>
+                            <td class="table-cell-Hash"id="amountDNA_Hash">0</td>
                         </tr>
-                        <tr class = "altTr">
-                            <td>T</td>
-                            <td id = "numT">0</td>
+                        <tr class="table-type-row" id="row-RNA">
+                            <th class="table-cell-type" id="tableHeadingRNA">RNA (rN)</th>
+                            <td class="table-cell-A"id="amountRNA_A">0</td>
+                            <td class="table-cell-T" id="amountRNA_T">0</td>
+                            <td class="table-cell-G" id="amountRNA_G">0</td>
+                            <td class="table-cell-C" id="amountRNA_C">0</td>
+                            <td class="table-cell-U" id="amountRNA_U">0</td>
+                            <td class="table-cell-Hash"id="amountRNA_Hash">0</td>
                         </tr>
-                        <tr>
-                            <td>G</td>
-                            <td id = "numG">0</td>
+                        <tr class="table-type-row" id="row-Fluoro">
+                            <th class="table-cell-type" id="tableHeadingFluoro">2'Fluoro RNA (fN)</th>
+                            <td class="table-cell-A" id="amountFluoro_A">0</td>
+                            <td class="table-cell-T" id="amountFluoro_T">0</td>
+                            <td class="table-cell-G" id="amountFluoro_G">0</td>
+                            <td class="table-cell-C" id="amountFluoro_C">0</td>
+                            <td class="table-cell-U" id="amountFluoro_U">0</td>
+                            <td class="table-cell-Hash"id="amountFluoro_Hash">0</td>
                         </tr>
-                        <tr class = "altTr">
-                            <td>C</td>
-                            <td id = "numC">0</td>
+                        <tr class="table-type-row" id="row-LNA">
+                            <th class="table-cell-type" id="tableHeadingLNA">LNA (lN)</th>
+                            <td class="table-cell-A" id="amountLNA_A">0</td>
+                            <td class="table-cell-T" id="amountLNA_T">0</td>
+                            <td class="table-cell-G" id="amountLNA_G">0</td>
+                            <td class="table-cell-C" id="amountLNA_C">0</td>
+                            <td class="table-cell-U" id="amountLNA_U">0</td>
+                            <td class="table-cell-Hash"id="amountLNA_Hash">0</td>
                         </tr>
-                        <tr>
-                            <td>U</td>
-                            <td id = "numU">0</td>
+                        <tr class="table-type-row" id="row-OMe">
+                            <th class="table-cell-type" id="tableHeadingOMe">2'OMe RNA (mN)</th>
+                            <td class="table-cell-A" id="amountOMe_A">0</td>
+                            <td class="table-cell-T" id="amountOMe_T">0</td>
+                            <td class="table-cell-G" id="amountOMe_G">0</td>
+                            <td class="table-cell-C" id="amountOMe_C">0</td>
+                            <td class="table-cell-U" id="amountOMe_U">0</td>
+                            <td class="table-cell-Hash"id="amountOMe_Hash">0</td>
+                        </tr>
+                        <tr class="table-type-row" id="row-FANA">
+                            <th class="table-cell-type" id="tableHeadingFANA">FANA (aN)</th>
+                            <td class="table-cell-A" id="amountFANA_A">0</td>
+                            <td class="table-cell-T" id="amountFANA_T">0</td>
+                            <td class="table-cell-G" id="amountFANA_G">0</td>
+                            <td class="table-cell-C" id="amountFANA_C">0</td>
+                            <td class="table-cell-U" id="amountFANA_U">0</td>
+                            <td class="table-cell-Hash"id="amountFANA_Hash">0</td>
+                        </tr>
+                        <tr class="table-type-row" id="row-ANA">
+                            <th class="table-cell-type" id="tableHeadingANA">ANA (araN)</th>
+                            <td class="table-cell-A" id="amountANA_A">0</td>
+                            <td class="table-cell-T" id="amountANA_T">0</td>
+                            <td class="table-cell-G" id="amountANA_G">0</td>
+                            <td class="table-cell-C" id="amountANA_C">0</td>
+                            <td class="table-cell-U" id="amountANA_U">0</td>
+                            <td class="table-cell-Hash"id="amountANA_Hash">0</td>
+                        </tr>
+                        <tr class="table-type-row" id="row-Total">
+                            <th class="table-cell-type" id="tableHeadingTotals">Total</th>
+                            <td class="table-cell-A" id="amountTotal_A">0</td>
+                            <td class="table-cell-T" id="amountTotal_T">0</td>
+                            <td class="table-cell-G" id="amountTotal_G">0</td>
+                            <td class="table-cell-C" id="amountTotal_C">0</td>
+                            <td class="table-cell-U" id="amountTotal_U">0</td>
+                            <td class="table-cell-Hash"id="amountTotal_Hash">0</td>
                         </tr>
                     </table>
                 </div>
-            </div>
-        </p>
+            </div>   
+        </div>
     </body>
 </html>
