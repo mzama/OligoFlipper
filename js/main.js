@@ -6,33 +6,31 @@ class Nucleotide {
         this.ntHTML = this.ProcessNT();
     }
 
-    //Could add stuff here to also ensure only accepted bases are taken (ATCGU#), or to ignore non-recognized types
-
     ProcessNT() {
         switch(this.type) {
             default:
                 console.log(`Prefix ${this.type} is not recognized. Setting as DNA.`);
                 this.type = "d";
             case "d":                
-                return `<span class="base-type-DNA">${this.base}</span>`;
+                return `<span class="base-type-DNA">${this.type}${this.base}</span>`;
                 break;
             case "r":
-                return `<span class="base-type-RNA">${this.base}</span>`;
+                return `<span class="base-type-RNA">${this.type}${this.base}</span>`;
                 break;
             case "f":
-                return `<span class="base-type-Fluoro">${this.base}</span>`;
+                return `<span class="base-type-Fluoro">${this.type}${this.base}</span>`;
                 break;
             case "l":
-                return `<span class="base-type-LNA">${this.base}</span>`;
+                return `<span class="base-type-LNA">${this.type}${this.base}</span>`;
                 break;
             case "m":
-                return `<span class="base-type-OMe">${this.base}</span>`;
+                return `<span class="base-type-OMe">${this.type}${this.base}</span>`;
                 break;
             case "a":
-                return `<span class="base-type-FANA">${this.base}</span>`;
+                return `<span class="base-type-FANA">${this.type}${this.base}</span>`;
                 break;
             case "ara":
-                return `<span class="base-type-ANA">${this.base}</span>`;
+                return `<span class="base-type-ANA">${this.type}${this.base}</span>`;
                 break;
         }
     }             
@@ -67,15 +65,23 @@ function ProcessSequence() {
     
     document.querySelector("#reversedSequenceOutput").innerHTML = "";
 
-    if (document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z#]/g)) {
-        document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z#]/g).forEach(n => { 
-            ntArr.push(new Nucleotide(n.match(/[A-Z#]/)[0], n.match(/[a-z]+/)[0]));    
-        });
+    if (document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z]|[#]/g)) {
+        document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z]|[#]/g).forEach(n => {
+            if (n==="#") {
+                ntArr.push("#");
+            } else {
+                ntArr.push(new Nucleotide(n.match(/[A-Z]/)[0], n.match(/[a-z]+/)[0]));    
+            }
+        });                
+    }
 
-        ntArr.reverse().forEach(n => {
+    ntArr.reverse().forEach(n => {
+        if (n === "#") {
+            document.querySelector("#reversedSequenceOutput").innerHTML += "#";
+        } else {
             document.querySelector("#reversedSequenceOutput").innerHTML += n.ntHTML;
-        });        
-    } 
+        }
+    });
 
     //Get NT totals
         // A //
@@ -123,15 +129,17 @@ function ProcessSequence() {
         document.querySelector("#amountFANA_U").innerHTML = ntArr.filter(n => n.base ==="U" && n.type === "a").length;
         document.querySelector("#amountANA_U").innerHTML = ntArr.filter(n => n.base ==="U" && n.type === "ara").length;
         document.querySelector("#amountTotal_U").innerHTML = ntArr.filter(n => n.base ==="U").length;
+        // TOTALS //
+        document.querySelector("#amountDNA_Total").innerHTML = ntArr.filter(n => n.type === "d").length;
+        document.querySelector("#amountRNA_Total").innerHTML = ntArr.filter(n => n.type === "r").length;
+        document.querySelector("#amountFluoro_Total").innerHTML = ntArr.filter(n => n.type === "f").length;
+        document.querySelector("#amountLNA_Total").innerHTML = ntArr.filter(n => n.type === "l").length;
+        document.querySelector("#amountOMe_Total").innerHTML = ntArr.filter(n => n.type === "m").length;
+        document.querySelector("#amountFANA_Total").innerHTML = ntArr.filter(n => n.type === "a").length;
+        document.querySelector("#amountANA_Total").innerHTML = ntArr.filter(n => n.type === "ara").length;
+        document.querySelector("#amountTotal_Total").innerHTML = ntArr.filter(n => n.base != "#").length;
         // # //
-        document.querySelector("#amountDNA_Hash").innerHTML = ntArr.filter(n => n.base ==="#" && n.type === "d").length;
-        document.querySelector("#amountRNA_Hash").innerHTML = ntArr.filter(n => n.base ==="#" && n.type === "r").length;
-        document.querySelector("#amountFluoro_Hash").innerHTML = ntArr.filter(n => n.base ==="#" && n.type === "f").length;
-        document.querySelector("#amountLNA_Hash").innerHTML = ntArr.filter(n => n.base ==="#" && n.type === "l").length;
-        document.querySelector("#amountOMe_Hash").innerHTML = ntArr.filter(n => n.base ==="#" && n.type === "m").length;
-        document.querySelector("#amountFANA_Hash").innerHTML = ntArr.filter(n => n.base ==="#" && n.type === "a").length;
-        document.querySelector("#amountANA_Hash").innerHTML = ntArr.filter(n => n.base ==="#" && n.type === "ara").length;
-        document.querySelector("#amountTotal_Hash").innerHTML = ntArr.filter(n => n.base ==="#").length;
+        document.querySelector("#amountTotal_Hash").innerHTML = ntArr.filter(n => n ==="#").length;
 }
 
  function SelectText(_containerid) {
