@@ -5,6 +5,11 @@
         <meta charset = "utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <link rel="apple-touch-icon" sizes="180x180" href="Icon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="Icon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="Icon/favicon-16x16.png" />
+        <link rel="manifest" href="Icon/site.webmanifest" />
+
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@100&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/main.css" />
@@ -23,7 +28,7 @@
             </div>
             <div class="content-container">
                 <div class="oligo-input-container">
-                    <input type="text" id="oligoInputBox" value="Enter Sequence Here" class="inputbox-oligo" oninput="RevSeqPress()">
+                    <input type="text" id="oligoInputBox" value="Enter sequence here..." class="inputbox-oligo faded">
                 </div>
                 <div class="oligo-output-container" onClick="SelectText ('reversedSequenceOutput')">
                     <div class="oligo-output-title">
@@ -46,7 +51,7 @@
                             <th class="table-cell-U" id="tableHeadingU">U</th>
                             <th class="table-cell-Hash" id="tableHeadingHash">#</th>
                         </tr>
-                        <tr class="table-type-row" id="row-DNA">
+                        <tr class="table-type-row base-type-DNA" id="row-DNA">
                             <th class="table-cell-type" id="tableHeadingDNA">DNA (dN)</th>
                             <td  class="table-cell-A" id="amountDNA_A">0</td>
                             <td class="table-cell-T" id="amountDNA_T">0</td>
@@ -55,7 +60,7 @@
                             <td class="table-cell-U" id="amountDNA_U">0</td>
                             <td class="table-cell-Hash"id="amountDNA_Hash">0</td>
                         </tr>
-                        <tr class="table-type-row" id="row-RNA">
+                        <tr class="table-type-row base-type-RNA" id="row-RNA">
                             <th class="table-cell-type" id="tableHeadingRNA">RNA (rN)</th>
                             <td class="table-cell-A"id="amountRNA_A">0</td>
                             <td class="table-cell-T" id="amountRNA_T">0</td>
@@ -64,7 +69,7 @@
                             <td class="table-cell-U" id="amountRNA_U">0</td>
                             <td class="table-cell-Hash"id="amountRNA_Hash">0</td>
                         </tr>
-                        <tr class="table-type-row" id="row-Fluoro">
+                        <tr class="table-type-row base-type-Fluoro" id="row-Fluoro">
                             <th class="table-cell-type" id="tableHeadingFluoro">2'Fluoro RNA (fN)</th>
                             <td class="table-cell-A" id="amountFluoro_A">0</td>
                             <td class="table-cell-T" id="amountFluoro_T">0</td>
@@ -73,7 +78,7 @@
                             <td class="table-cell-U" id="amountFluoro_U">0</td>
                             <td class="table-cell-Hash"id="amountFluoro_Hash">0</td>
                         </tr>
-                        <tr class="table-type-row" id="row-LNA">
+                        <tr class="table-type-row base-type-LNA" id="row-LNA">
                             <th class="table-cell-type" id="tableHeadingLNA">LNA (lN)</th>
                             <td class="table-cell-A" id="amountLNA_A">0</td>
                             <td class="table-cell-T" id="amountLNA_T">0</td>
@@ -82,7 +87,7 @@
                             <td class="table-cell-U" id="amountLNA_U">0</td>
                             <td class="table-cell-Hash"id="amountLNA_Hash">0</td>
                         </tr>
-                        <tr class="table-type-row" id="row-OMe">
+                        <tr class="table-type-row base-type-OMe" id="row-OMe">
                             <th class="table-cell-type" id="tableHeadingOMe">2'OMe RNA (mN)</th>
                             <td class="table-cell-A" id="amountOMe_A">0</td>
                             <td class="table-cell-T" id="amountOMe_T">0</td>
@@ -91,7 +96,7 @@
                             <td class="table-cell-U" id="amountOMe_U">0</td>
                             <td class="table-cell-Hash"id="amountOMe_Hash">0</td>
                         </tr>
-                        <tr class="table-type-row" id="row-FANA">
+                        <tr class="table-type-row base-type-FANA" id="row-FANA">
                             <th class="table-cell-type" id="tableHeadingFANA">FANA (aN)</th>
                             <td class="table-cell-A" id="amountFANA_A">0</td>
                             <td class="table-cell-T" id="amountFANA_T">0</td>
@@ -100,7 +105,7 @@
                             <td class="table-cell-U" id="amountFANA_U">0</td>
                             <td class="table-cell-Hash"id="amountFANA_Hash">0</td>
                         </tr>
-                        <tr class="table-type-row" id="row-ANA">
+                        <tr class="table-type-row base-type-ANA" id="row-ANA">
                             <th class="table-cell-type" id="tableHeadingANA">ANA (araN)</th>
                             <td class="table-cell-A" id="amountANA_A">0</td>
                             <td class="table-cell-T" id="amountANA_T">0</td>

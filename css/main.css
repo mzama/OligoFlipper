@@ -1,6 +1,6 @@
 /* GLOBAL STYLES */
 :root{
-    --element-bottom-spacing: 3.75rem;     
+    --element-bottom-spacing: 1.15rem;     
     --ui-color-dark: #374857;
     --ui-color-faded: #aab0b5;
     --ui-color-light: #dfe3e6;
@@ -27,7 +27,7 @@ html {
     background-color: var(--ui-color-dark);
     box-sizing: border-box;
     height: 6rem;
-    margin-bottom: var(--element-bottom-spacing);
+    margin-bottom: 3.75rem;
     padding: 1.5rem 2.25rem;
 }
 .header-title {
@@ -42,7 +42,7 @@ html {
 
 /* OLIGO INPUT */
 .oligo-input-container {
-    margin: 0 auto 1.25rem;
+    margin: 0 auto var(--element-bottom-spacing);
 }
 .inputbox-oligo {
     background-color: var(--ui-color-light);
@@ -53,6 +53,9 @@ html {
     height: 2.5rem;
     padding: 0.15rem 0.75rem;    
     width: 100%;
+}
+.faded {
+    color: var(--ui-color-faded) !important;
 }
 
 /* OLIGO OUTPUT */
@@ -100,25 +103,25 @@ td {
 .table-cell-type, .table-cell-T, .table-cell-C, .table-cell-Hash {
     background-color: rgba(0,0,0,0.1);
 }
-#row-DNA {
+.base-type-DNA {
     color: black;
 }
-#row-RNA {
+.base-type-RNA {
     color: red;
 }
-#row-Fluoro {
+.base-type-Fluoro {
     color: green;
 }
-#row-LNA {
+.base-type-LNA {
     color: orange;
 }
-#row-OMe {
+.base-type-OMe {
     color: blue;
 }
-#row-FANA {
+.base-type-FANA {
     color: #b5a907;
 }
-#row-ANA {
+.base-type-ANA {
     color: purple;
 }
 #row-Total {
