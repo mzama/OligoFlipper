@@ -47,7 +47,7 @@ html {
 .inputbox-oligo {
     background-color: var(--ui-color-light);
     border: 4px solid var(--ui-color-dark);
-    border-radius: 15px;
+    /* border-radius: 15px; */
     box-sizing: border-box;
     display: block;
     height: 2.5rem;
@@ -66,7 +66,7 @@ html {
 .oligo-output-container {
     background-color: var(--ui-color-light);
     border: 4px solid var(--ui-color-dark);
-    border-radius: 15px;
+    /* border-radius: 15px; */
     margin: 0 auto var(--element-bottom-spacing);
     min-height: 8rem;
     padding: 0.5rem 0.75rem;
@@ -88,8 +88,8 @@ html {
 table {
     background-color: var(--ui-color-light);
     border: 4px solid var(--ui-color-dark);
-    border-collapse: separate;
-    border-radius: 15px;  
+    /* border-collapse: separate; */
+    /* border-radius: 15px;   */
     color: var(--ui-color-dark);  
     width: 100%;
 }
@@ -106,9 +106,13 @@ td {
     text-align: right;
     transition: 0.25s ease-in-out all;
 }
+.table-cell-FILLER {
+    border-bottom: 0;
+    border-top: 0;
+}
 td:hover, th:hover {
     background-color: var(--ui-color-dark);
-    transform: scale(1.025);
+    transform: scale(1.05);
 }
 .table-base-headings > th:hover, #row-Total > th:hover, #row-Total > td:hover {
     color: var(--ui-color-faded);
@@ -116,9 +120,11 @@ td:hover, th:hover {
 .table-cell-A, .table-cell-G, .table-cell-U {
     background-color: 0;
 }
-.table-cell-type, .table-cell-T, .table-cell-C, .table-cell-Hash {
+.table-cell-type, .table-cell-T, .table-cell-C, .table-cell-Total {
     background-color: rgba(0,0,0,0.1);
 }
+
+/* BASE COLOURS */
 .base-type-DNA {
     color: black;
 }
