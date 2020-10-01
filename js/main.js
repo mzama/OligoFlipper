@@ -137,7 +137,7 @@ function ProcessSequence() {
         document.querySelector("#amountOMe_Total").innerHTML = ntArr.filter(n => n.type === "m").length;
         document.querySelector("#amountFANA_Total").innerHTML = ntArr.filter(n => n.type === "a").length;
         document.querySelector("#amountANA_Total").innerHTML = ntArr.filter(n => n.type === "ara").length;
-        document.querySelector("#amountTotal_Total").innerHTML = ntArr.filter(n => n.base != "#").length;
+        document.querySelector("#amountTotal_Total").innerHTML = ntArr.filter(n => n != "#").length;
         // # //
         document.querySelector("#amountTotal_Hash").innerHTML = ntArr.filter(n => n ==="#").length;
 }
