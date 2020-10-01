@@ -1,1 +1,1 @@
-This program was created for Ada McVean of the Dahma Lab at McGill University to quickly flip around nucleotides and assess their base composition.
+This program was created by [Matteo Zamaria](https://github.com/mzama) for [Ada McVean](https://adamcvean.wordpress.com/) of the [Damha Lab](https://damha-group.mcgill.ca/) at[ McGill University](https://www.mcgill.ca/) to quickly flip around [oligonucleotides](https://en.wikipedia.org/wiki/Oligonucleotide) and assess their base composition.
