@@ -65,11 +65,14 @@ function ProcessSequence() {
     
     document.querySelector("#reversedSequenceOutput").innerHTML = "";
 
-    if (document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z]|[#]/g)) {
-        document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z]|[#]/g).forEach(n => {
-            if (n==="#") {
+    if (document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z]|[#]|[A-Z]/g)) {
+        document.querySelector("#oligoInputBox").value.match(/[a-z]+[A-Z]|[#]|[A-Z]/g).forEach(n => {
+            if (n === "#") {
                 ntArr.push("#");
-            } else {
+             } else if (!n.match(/[a-z]+/)) {
+                ntArr.push(new Nucleotide(n.match(/[A-Z]/)[0], "d"));
+            }
+            else {
                 ntArr.push(new Nucleotide(n.match(/[A-Z]/)[0], n.match(/[a-z]+/)[0]));    
             }
         });                
