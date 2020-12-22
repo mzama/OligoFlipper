@@ -42,6 +42,12 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#oligoInputBox").addEventListener("input", ProcessSequence);
     document.querySelector("#oligoInputBox").addEventListener("click", CheckInputPlaceholder);
     document.querySelector("#oligoInputBox").addEventListener("focusout", CheckInputEmpty);
+    document.querySelectorAll(".NT-cell").forEach(e => e.addEventListener("click", function() {
+        var inputBox = document.querySelector("#oligoInputBox")        
+        CheckInputPlaceholder();
+        inputBox.value = inputBox.value + e.dataset.ntcode; 
+        ProcessSequence();
+    }));
 });
 
 function CheckInputEmpty() {
