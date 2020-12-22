@@ -59,7 +59,7 @@ html {
     background-color: var(--ui-color-dark);
 }
 .faded {
-    color: var(--ui-color-faded) !important;
+    color: var(--ui-color-faded);
 }
 
 /* OLIGO OUTPUT */
@@ -71,6 +71,7 @@ html {
     min-height: 8rem;
     padding: 0.5rem 0.75rem;
     transition: 0.25s ease-in-out all;
+    word-wrap: break-word;
 }
 .oligo-output-container:hover {
     background-color: var(--ui-color-dark);
