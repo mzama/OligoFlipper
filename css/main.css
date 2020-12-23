@@ -124,6 +124,11 @@ td:hover, th:hover {
 .table-cell-type, .table-cell-T, .table-cell-C, .table-cell-Total {
     background-color: rgba(0,0,0,0.1);
 }
+.NT-cell:active {
+    background-color: var(--ui-color-faded);
+    color: var(--ui-color-light);
+    transform: scale(1.15);
+}
 
 /* BASE COLOURS */
 .base-type-DNA {
